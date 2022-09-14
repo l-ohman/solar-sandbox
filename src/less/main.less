@@ -10,6 +10,7 @@
     height: @headerHeight;
     width: 100%;
     position: absolute;
+    z-index: 1;
 
     display: flex;
     align-items: center;
@@ -26,4 +27,12 @@
     height: (@headerHeight * 0.75);
     bottom: 0%;
     justify-content: space-around;
+}
+
+#main-container {
+    z-index: auto;
+    width: 100vw;
+    height: 100vh;
+    
+    background-color: black;
 }
