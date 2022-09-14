@@ -1,3 +1,29 @@
 * {
     margin: 0;
+    font-family: "Quicksand", Helvetica, Arial, sans-serif;
+}
+
+@headerHeight: 50px;
+@grayNum: 70;
+
+#header, #footer {
+    height: @headerHeight;
+    width: 100%;
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+
+    background-color: rgb(@grayNum, @grayNum, (@grayNum + 20));
+    color: white;
+
+    * {
+        padding: 0 1em;
+    }
+}
+
+#footer {
+    height: (@headerHeight * 0.75);
+    bottom: 0%;
+    justify-content: space-around;
 }

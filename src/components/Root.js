@@ -1,7 +1,13 @@
 import React from "react";
+import { Header, Footer } from "./"
 
 function Root() {
-    return <h2>Hello world</h2>
+    return(
+        <>
+            <Header />
+            <Footer />
+        </>
+    )
 }
 
 export default Root;
