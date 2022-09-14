@@ -1,19 +1,17 @@
 import React from "react";
 import { useFrame } from "@react-three/fiber";
-import { orbitCalculator, randomStartingPosition, handleRotation } from "./utils";
+import { orbitCalculator, randomStartingPosition } from "./utils";
 
 // 'props' will include color, size, distance, and possibly more
 function Planet({ color, size, distance, speed }) {
     const ref = React.useRef();
 
-    const rotation = 0.003;
     useFrame(() => {
         let pos = ref.current.position;
         [pos.x, pos.z] = orbitCalculator(distance, pos, speed);
-        ref.current.rotation.y += rotation;
+        ref.current.rotation.y += 0.003;
     })
     
-
     return(
         <mesh
             ref={ref}

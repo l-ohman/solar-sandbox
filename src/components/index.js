@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer"
+import Flow from "./nodes/Flow";
 import Canvas from "./three/Canvas";
 
-export { Header, Footer, Canvas };
+export { Header, Footer, Flow, Canvas };

@@ -23,14 +23,16 @@ function CanvasContainer() {
     };
 
     return(
-        <Canvas>
-            <CameraController />
-            <AxesDisplay length={8}/>
-            <Sun />
-            <Planet {...planetProps1} />
-            <Planet {...planetProps2} />
-            <Planet {...planetProps3} />
-        </Canvas>
+        <div className="half">
+            <Canvas>
+                <CameraController />
+                <AxesDisplay length={8}/>
+                <Sun />
+                <Planet {...planetProps1} />
+                <Planet {...planetProps2} />
+                <Planet {...planetProps3} />
+            </Canvas>
+        </div>
     )
 }
 

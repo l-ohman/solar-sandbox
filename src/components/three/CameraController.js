@@ -7,6 +7,7 @@ function CameraController() {
     const { camera, gl } = useThree();
     camera.position.set(12, 12, 12);
 
+    // Resizing the window seems to break the camera, but it returns to normal when repositioned...?
     React.useEffect(() => {
         const controls = new OrbitControls(camera, gl.domElement);
         controls.minDistance = 3;
