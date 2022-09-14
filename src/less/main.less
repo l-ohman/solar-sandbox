@@ -19,20 +19,29 @@
     color: white;
 
     * {
-        padding: 0 1em;
+        padding: 0 0.6em;
     }
 }
 
+@headerHeight: 7vh;
+
+#header{
+    height: @headerHeight;
+}
+
 #footer {
-    height: (@headerHeight * 0.75);
+    height: 5vh;
     bottom: 0%;
     justify-content: space-around;
 }
 
 #main-container {
     z-index: auto;
+    position: absolute;
+    top: @headerHeight;
+
     width: 100vw;
-    height: 100vh;
+    height: (100vh - @headerHeight - 4vh);
 
     background-color: black;
 }
@@ -46,4 +55,8 @@
 
 .left {
     background-color: white;
+}
+
+.flowBtn {
+
 }
