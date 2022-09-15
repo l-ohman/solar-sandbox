@@ -1,12 +1,15 @@
 import React from "react";
 import { useFrame } from "@react-three/fiber";
+import useStore from "../../store";
 
 function Sun() {
+    const state = useStore(state => state)
     const ref = React.useRef();
     const [hovered, setHovered] = React.useState(false);
     
     const handleClick = () => {
-        console.log('Sun clicked')
+        state.pauseToggle();
+        console.log('Sun clicked. Playing state: ' + state.playing)
     }
 
     const rotation = 0.003
