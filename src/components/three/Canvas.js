@@ -1,6 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { CameraController, Sun, Planet, AxesDisplay } from "./";
+import { CameraController, Sun, Planet, OrbitCircle, AxesDisplay } from "./";
 
 function CanvasContainer() {
     const planet2 = {
@@ -16,7 +16,7 @@ function CanvasContainer() {
         color: 'blue',
         size: 0.3,
         distance: 3,
-        speed: 100,
+        speed: 75,
     };
 
     return(
@@ -27,6 +27,7 @@ function CanvasContainer() {
                 <Sun />
                 {/* <Planet {...planet1} /> */}
                 <Planet {...planet2} />
+                <OrbitCircle distance={planet2.distance} />
                 <Planet {...moon1} />
             </Canvas>
         </div>

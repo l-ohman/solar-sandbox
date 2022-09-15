@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
     return (
         <div id="header">
-            <h2>solar synthesizer</h2>
+            <h2>solar sandbox</h2>
         </div>
     )
 }

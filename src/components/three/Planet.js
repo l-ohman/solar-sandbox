@@ -2,7 +2,6 @@ import React from "react";
 import { useFrame } from "@react-three/fiber";
 // import { Vector3 } from "three";
 import useStore from "../../store";
-import { Moon } from "./";
 import { orbitCalculator, randomStartingPosition } from "./utils";
 
 function Planet({ id, color, size, distance, speed, parent = null }) {
@@ -12,25 +11,16 @@ function Planet({ id, color, size, distance, speed, parent = null }) {
 
   // This prevents pausing from setting planets to a starting position
   const [startPosition, setStartPosition] = React.useState([distance, 0, 0]);
-  const [currentPosition, setCurrentPosition] = React.useState(startPosition);
 
   useFrame(() => {
     if (state.playing) {
       let pos = ref.current.position;
-      let newPos;
-      // console.log(`id: ${id} | distance: ${distance} | speed: ${speed}`)
       if (parent) {
-        newPos = orbitCalculator(distance, pos, speed, state.planets[parent]);
-        pos.x = newPos.x;
-        pos.z = newPos.z;
+        [pos.x, pos.y, pos.z] = orbitCalculator(distance, pos, speed, state.planetPositions[parent]);
       } else {
-        newPos = orbitCalculator(distance, pos, speed);
-        pos.x = newPos.x;
-        pos.z = newPos.z;
-        state.updatePlanets(id, pos);
-        ref.current.rotation.y += 0.003;
+        [pos.x, pos.y, pos.z] = orbitCalculator(distance, pos, speed);
+        state.updatePlanetPositions(id, pos);
       };
-      // setCurrentPosition(pos);
     }
   });
 

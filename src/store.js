@@ -3,14 +3,14 @@ import create from "zustand";
 const useStore = create((set) => ({
   playing: true,
   pauseToggle: () => set((state) => ({ playing: !state.playing })),
-  planets: {
+  planetPositions: {
     // id: pos
   },
-  updatePlanets: (id, pos) =>
+  updatePlanetPositions: (id, pos) =>
     set((state) => ({
-      planets: {
-        ...state.planets,
-        // State can't handle vectors for some reason, so it's converted to an array
+      planetPositions: {
+        ...state.planetPositions,
+        // State can't handle vectors for some reason (probably user error), so it's converted to an array
         [id]: [pos.x, pos.y, pos.z],
       },
     })),

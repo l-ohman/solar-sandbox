@@ -9,13 +9,13 @@ export function AxesDisplay({ length }) {
 
 // 'speed' expressed as angular distance
 export function orbitCalculator(distance, currentPos, speed = 1, parentPos=[0,0,0]) {
-
-  let angle = Math.atan2(currentPos.x - parentPos[0], currentPos.z - parentPos[2]);
-  // console.log(`angle: ${angle} | speed: ${speed} | distance: ${distance}`);
+  // Should fix the planet 'speeding up' as it is closer to center
+  let angle = Math.atan2((currentPos.x - parentPos[0]), (currentPos.z - parentPos[2]));
   speed = speed * 0.001;
+
   let x = Math.sin(angle + speed) * distance + parentPos[0];
   let z = Math.cos(angle + speed) * distance + parentPos[2];
-  return { x, y: 0, z };
+  return [x, 0, z]
 }
 
 // Returns a vector - starts planet at ( x=1 || x=-1 || z=1 || z=-1 ) instead of placing each one at x=1

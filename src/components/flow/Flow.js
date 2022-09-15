@@ -1,9 +1,12 @@
 import React from "react";
 import ReactFlow, { Background, useNodesState, useEdgesState } from "react-flow-renderer";
 import { FlowControls, nodeTypes } from ".";
+import useStore from "../../store";
 import { defaultNodes, defaultEdges } from "./defaultNodesEdges";
 
 function Flow() {
+    const state = useStore(state => state);
+
     // Hooks to handles movement/selection
     const [nodes, setNodes, onNodesChange] = useNodesState(defaultNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(defaultEdges);
