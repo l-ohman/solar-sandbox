@@ -1,24 +1,18 @@
 import React from "react";
 import ReactFlow, { Background, useNodesState, useEdgesState } from "react-flow-renderer";
-import { FlowControls, CustomNode } from "./";
-
-const nodeTypes = { custom: CustomNode }
+import { FlowControls, nodeTypes } from ".";
+import { defaultNodes, defaultEdges } from "./defaultNodesEdges";
 
 function Flow() {
-    const testNodes = [
-        {
-            id: '1',
-            type: 'custom',
-            position: {x:0, y:0},
-            data: 'Test node',
-        }
-    ]
-
-    const [nodes, setNodes, onNodesChange] = useNodesState(testNodes);
-    const [edges, setEdges, setEdgesChange] = useEdgesState();
+    // Hooks to handles movement/selection
+    const [nodes, setNodes, onNodesChange] = useNodesState(defaultNodes);
+    const [edges, setEdges, onEdgesChange] = useEdgesState(defaultEdges);
 
     let flowProps = {
-        nodes: testNodes,
+        nodes: nodes,
+        edges: edges,
+        onNodesChange,
+        onEdgesChange,
         nodeTypes,
         fitView: true
     }
