@@ -3,6 +3,13 @@ import create from "zustand";
 const useStore = create((set) => ({
   playing: true,
   pauseToggle: () => set((state) => ({ playing: !state.playing })),
+  system: [
+    //planetObjs with 'moons' prop which is an array of moon
+  ],
+  updateSystem: () => set(state => ({
+
+  })),
+  // Should refactor planets so position is not stored here (this method seems unnecessarily CPU-intensive)
   planetPositions: {
     // id: pos
   },
