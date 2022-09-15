@@ -17,8 +17,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-flow-renderer": "^10.3.17",
-    "react-redux": "^8.0.2",
-    "redux": "^4.2.0",
     "three": "^0.144.0",
     "tone": "^14.7.77"
   },
@@ -31,7 +29,6 @@
     "less-loader": "^11.0.0",
     "mini-css-extract-plugin": "^2.6.1",
     "nodemon": "^2.0.19",
-    "redux-logger": "^3.0.6",
     "volleyball": "^1.5.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"

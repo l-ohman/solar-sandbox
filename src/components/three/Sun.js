@@ -5,8 +5,9 @@ function Sun() {
     const ref = React.useRef();
     const [hovered, setHovered] = React.useState(false);
     
-    // Can maybe use 'clicked' later for pausing/playing?
-    const [clicked, setClicked] = React.useState(false);
+    const handleClick = () => {
+        console.log('Sun clicked')
+    }
 
     const rotation = 0.003
     useFrame(() => {
@@ -19,7 +20,8 @@ function Sun() {
         <mesh
             ref={ref}
             onPointerOver={() => setHovered(true)}
-            onPointerOut={() => setHovered(false)}>
+            onPointerOut={() => setHovered(false)}
+            onClick={handleClick}>
             <sphereGeometry args={[2, 12, 12]} />
             <meshStandardMaterial emissive="gold" emissiveIntensity={hovered ? 1 : 0.85} />
         </mesh>
