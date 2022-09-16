@@ -4,6 +4,7 @@
   box-shadow: 0 0 3px lightgray;
   border-radius: 5px;
   background-color: white;
+  width: fit-content;
 }
 
 .selected {
@@ -20,4 +21,31 @@ path.react-flow__edge-path:hover {
   top: 1.2vh;
   background-color: white;
   z-index: 5;
+}
+
+.editFormContainer {
+  h2 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    * {
+      padding: 3px 5px;
+    }
+    label {
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      // button {
+      //   border-radius: 50%;
+      // }
+    }
+  }
+}
+
+.planetNode, .moonNode {
+  width: 10em;
 }

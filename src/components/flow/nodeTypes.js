@@ -1,6 +1,6 @@
-// Custom Nodes
 import React from "react";
 import { Handle, Position } from 'react-flow-renderer';
+import { EditPlanetForm } from "./"
 
 // 'Handle' components allow node connections
 // 'Position' lets us set the location of the connection point
@@ -8,10 +8,7 @@ import { Handle, Position } from 'react-flow-renderer';
 function SunNode() {
     return(
         <>
-            <div>
-                <h2>the sun</h2>
-                <p>{"{form for controls}"}</p>
-            </div>
+            <h1>sun</h1>
             <Handle type="source" position={Position.Bottom} />
         </>
     )
@@ -21,9 +18,9 @@ function PlanetNode({ data }) {
     return(
         <>
             <Handle type="target" position={Position.Top} />
-            <div>
-                <h3>planet!</h3>
-                <p>{"{form for controls}"}</p>
+            <div className="editFormContainer">
+                <h2>planet!</h2>
+                <EditPlanetForm {...data}/>
             </div>
             <Handle type="source" position={Position.Bottom}/>
         </>
@@ -33,9 +30,9 @@ function PlanetNode({ data }) {
 function MoonNode({ data }) {
     return(
         <>
-            <div>
+            <div className="editFormContainer">
                 <h3>moon</h3>
-                <p>{"{form for controls}"}</p>
+                <EditPlanetForm {...data}/>
             </div>        
             <Handle type="target" position={Position.Top} />
         </>

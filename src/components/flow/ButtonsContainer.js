@@ -11,10 +11,10 @@ const defaultPlanet = (id) => ({
     id,
     type: 'planet',
     position: {x:0, y:85},
-    className: 'node',
+    className: 'node planetNode',
     data: {
         id,
-        color: 'blue',
+        color: '#2065E0',
         size: 1,
         distance: Math.ceil(Math.random()*15)+7,
         speed: 10,
@@ -25,10 +25,10 @@ const defaultMoon = (id) => ({
     id,
     type: 'moon',
     position: {x:0, y:100},
-    className: 'node',
+    className: 'node moonNode',
     data: {
         id,
-        color: 'red',
+        color: '#E52626',
         size: 0.5,
         distance: Math.ceil(Math.random()*4)+2,
         speed: 100
