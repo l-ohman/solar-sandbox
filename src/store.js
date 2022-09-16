@@ -1,6 +1,6 @@
 import create from "zustand";
 
-const defaultNodes = [
+export const defaultNodes = [
   {
     id: "sun",
     type: "sun",
@@ -16,13 +16,17 @@ const useStore = create((set, get) => ({
 
   // Nodes
   nodes: defaultNodes,
-  addNode: (newNode) =>
-    set((state) => ({
-      nodes: [...state.nodes, newNode],
-    })),
   updateNodes: (nodes) =>
     set((state) => ({
       nodes,
+    })),
+
+  // 'newNode' is something for the Flow to watch so it knows when to render from state (as opposed to rerendering for local changes, because the local changes are sent to the state - but maybe they don't need to be?)
+  newNode: {},
+  addNode: (newNode) =>
+    set((state) => ({
+      nodes: [...state.nodes, newNode],
+      newNode,
     })),
   // Edges
   edges: [],

@@ -4,9 +4,7 @@ function OrbitCircle({ distance }) {
     const ref = React.useRef();
     
     React.useEffect(() => {
-        console.log(ref)
         if (ref.current) {
-            console.log(ref.current)
             ref.current.rotation.x = Math.PI / -2;
         }
     }, [ref.current])

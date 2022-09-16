@@ -1,20 +1,20 @@
 import React from "react";
 import ReactFlow, { Background, applyNodeChanges, applyEdgeChanges, addEdge } from "react-flow-renderer";
 import { FlowControls, AddNodesTab, nodeTypes } from "./";
-import useStore from "../../store";
+import useStore, { defaultNodes } from "../../store";
 // import { defaultNodes, defaultEdges } from "./defaultNodesEdges";
 
 function Flow() {
-    const nodesStore = useStore(state => state.nodes);
-    const edgesStore = useStore(state => state.edges);
+    const newNode = useStore(state => state.newNode);
+    // const edgesStore = useStore(state => state.edges);
     const updateNodes = useStore(state => state.updateNodes);
 
     // Hooks to handles movement/selection - might have to remove these to do custom callbacks
     // const [nodes, setNodes, onNodesChange] = useNodesState(nodesStore);
     // const [edges, setEdges, onEdgesChange] = useEdgesState(edgesStore);
-
-    const [nodes, setNodes] = React.useState(nodesStore);
-    const [edges, setEdges] = React.useState(edgesStore);
+    console.log('flow component')
+    const [nodes, setNodes] = React.useState(defaultNodes);
+    const [edges, setEdges] = React.useState([]);
 
     const onNodesChange = React.useCallback((changes) => {
         setNodes((nodes) => {
@@ -33,8 +33,10 @@ function Flow() {
 
     // Updates display when item added via 'add planet' button
     React.useEffect(() => {
-        setNodes(nodesStore);
-    }, [nodesStore.length])
+        if (newNode.position) {
+            setNodes([...nodes, newNode]);
+        }
+    }, [newNode])
 
     // For connecting nodes
     const onConnect = React.useCallback(
