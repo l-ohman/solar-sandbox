@@ -24,7 +24,6 @@ function PlanetNode({ data }) {
             <div>
                 <h3>planet!</h3>
                 <p>{"{form for controls}"}</p>
-                <p>{data ? data : "no data found"}</p>
             </div>
             <Handle type="source" position={Position.Bottom}/>
         </>

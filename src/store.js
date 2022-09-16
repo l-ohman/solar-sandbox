@@ -1,15 +1,33 @@
 import create from "zustand";
 
-const useStore = create((set) => ({
+const defaultNodes = [
+  {
+    id: "sun",
+    type: "sun",
+    position: { x: 0, y: 0 },
+    className: "node",
+  },
+];
+
+const useStore = create((set, get) => ({
+  // Playing status
   playing: true,
   pauseToggle: () => set((state) => ({ playing: !state.playing })),
-  system: [
-    //planetObjs with 'moons' prop which is an array of moon
-  ],
-  updateSystem: () => set(state => ({
 
-  })),
-  // Should refactor planets so position is not stored here (this method seems unnecessarily CPU-intensive)
+  // Nodes
+  nodes: defaultNodes,
+  addNode: (newNode) =>
+    set((state) => ({
+      nodes: [...state.nodes, newNode],
+    })),
+  updateNodes: (nodes) =>
+    set((state) => ({
+      nodes,
+    })),
+  // Edges
+  edges: [],
+
+  // Planet positions - should refactor so position is not stored here (seems unnecessarily CPU-intensive)
   planetPositions: {
     // id: pos
   },

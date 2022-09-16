@@ -1,15 +1,40 @@
 import React from "react";
-import ReactFlow, { Background, useNodesState, useEdgesState, addEdge } from "react-flow-renderer";
+import ReactFlow, { Background, applyNodeChanges, applyEdgeChanges, addEdge } from "react-flow-renderer";
 import { FlowControls, AddNodesTab, nodeTypes } from "./";
 import useStore from "../../store";
-import { defaultNodes, defaultEdges } from "./defaultNodesEdges";
+// import { defaultNodes, defaultEdges } from "./defaultNodesEdges";
 
 function Flow() {
-    const updateSystem = useStore(state => state.updateSystem);
+    const nodesStore = useStore(state => state.nodes);
+    const edgesStore = useStore(state => state.edges);
+    const updateNodes = useStore(state => state.updateNodes);
 
-    // Hooks to handles movement/selection
-    const [nodes, setNodes, onNodesChange] = useNodesState(defaultNodes);
-    const [edges, setEdges, onEdgesChange] = useEdgesState(defaultEdges);
+    // Hooks to handles movement/selection - might have to remove these to do custom callbacks
+    // const [nodes, setNodes, onNodesChange] = useNodesState(nodesStore);
+    // const [edges, setEdges, onEdgesChange] = useEdgesState(edgesStore);
+
+    const [nodes, setNodes] = React.useState(nodesStore);
+    const [edges, setEdges] = React.useState(edgesStore);
+
+    const onNodesChange = React.useCallback((changes) => {
+        setNodes((nodes) => {
+            let updated = applyNodeChanges(changes, nodes);
+            updateNodes(updated);
+            return updated;
+        });
+        }, [setNodes]
+    );
+    const onEdgesChange = React.useCallback((changes) => {
+        setEdges((edges) => {
+            applyEdgeChanges(changes, edges)
+        });
+        }, [setEdges]
+    )
+
+    // Updates display when item added via 'add planet' button
+    React.useEffect(() => {
+        setNodes(nodesStore);
+    }, [nodesStore.length])
 
     // For connecting nodes
     const onConnect = React.useCallback(
@@ -17,6 +42,7 @@ function Flow() {
         [setEdges]
     );
 
+    const gridGap = 20;
     let flowProps = {
         nodes: nodes,
         edges: edges,
@@ -25,18 +51,17 @@ function Flow() {
         onConnect,
         nodeTypes,
         fitView: true,
-        fitViewOptions: { padding: 1 }
+        fitViewOptions: { padding: 1 },
+        // snapToGrid: true,
+        // snapGrid: 1,
     }
-
-    console.log('nodes:')
-    console.dir(nodes)
 
     return (
         <div className="half left">
             <AddNodesTab />
             <ReactFlow {...flowProps}>
                 <FlowControls />
-                <Background color="#000" gap={20} />
+                <Background color="#000" gap={gridGap} />
             </ReactFlow>
         </div>
     )
