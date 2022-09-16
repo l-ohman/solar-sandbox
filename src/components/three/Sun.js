@@ -3,13 +3,9 @@ import { useFrame } from "@react-three/fiber";
 import useStore from "../../store";
 
 function Sun() {
-  const state = useStore((state) => state);
+  const togglePlaying = useStore((state) => state.togglePlaying);
   const ref = React.useRef();
   const [hovered, setHovered] = React.useState(false);
-
-  const handleClick = () => {
-    state.pauseToggle();
-  };
 
   const rotation = 0.003;
   useFrame(() => {
@@ -23,12 +19,12 @@ function Sun() {
       ref={ref}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      onClick={handleClick}
+      onClick={togglePlaying}
     >
       <sphereGeometry args={[2, 12, 12]} />
       <meshStandardMaterial
         emissive="gold"
-        emissiveIntensity={hovered ? 1 : 0.85}
+        emissiveIntensity={hovered ? 2 : 1.1}
       />
     </mesh>
   );

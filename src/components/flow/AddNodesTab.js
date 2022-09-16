@@ -37,6 +37,7 @@ const defaultMoon = (id) => ({
 
 function AddNodesTab({ nodes, edges }) {
     const addNode = useStore(state => state.addNode);
+    const toggleAxes = useStore(state => state.toggleAxes);
 
     const handleClick = (e) => {
         let newNode;
@@ -53,11 +54,16 @@ function AddNodesTab({ nodes, edges }) {
         console.log('Nodes:', nodes)
         console.log('Edges:', edges)
     }
+    const toggleButton = () => {
+        toggleAxes();
+    }
+
     return(
         <div id="addNodesTab">
             <button id="addPlanet" onClick={handleClick}>Add planet</button>
             <button id="addMoon" onClick={handleClick}>Add moon</button>
             <button onClick={logState}>Log state</button>
+            <button onClick={toggleButton}>Toggle axes</button>
         </div>
     )
 }

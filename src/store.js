@@ -6,14 +6,14 @@ export const defaultNodes = [
     type: "sun",
     position: { x: 0, y: 0 },
     className: "node",
-    draggable: false
+    draggable: false,
   },
 ];
 
 const useStore = create((set, get) => ({
   // Playing status
   playing: true,
-  pauseToggle: () => set((state) => ({ playing: !state.playing })),
+  togglePlaying: () => set((state) => ({ playing: !state.playing })),
 
   // Nodes
   nodes: defaultNodes,
@@ -21,7 +21,6 @@ const useStore = create((set, get) => ({
     set((state) => ({
       nodes,
     })),
-  // 'newNode' is something for the Flow to watch so it knows when to render from state (as opposed to rerendering for local changes, because the local changes are sent to the state - but maybe they don't need to be?)
   newNode: {},
   addNode: (newNode) =>
     set((state) => ({
@@ -32,11 +31,17 @@ const useStore = create((set, get) => ({
   // Edges
   edges: [],
   updateEdges: (edges) =>
-    set(state => ({
+    set((state) => ({
       edges,
     })),
-  
-  // // Would like to use this to add 'undo' in the future
+
+  // Utilities
+  axesVisibility: false,
+  toggleAxes: () =>
+    set((state) => ({
+      axesVisibility: !state.axesVisibility,
+    })),
+  // // Would like to add 'undo' feature in the future
   // history: [],
   // updateHistory: () => {},
 }));
