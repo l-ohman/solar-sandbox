@@ -12,6 +12,7 @@ function Flow() {
     const [nodes, setNodes] = React.useState(defaultNodes);
     const [edges, setEdges] = React.useState([]);
 
+    // This should be refactored... the store shouldn't need the position of these elements, it should only need the structure
     const onNodesChange = React.useCallback((changes) => {
         setNodes((nodes) => {
             const updated = applyNodeChanges(changes, nodes);
