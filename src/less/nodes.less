@@ -24,7 +24,7 @@ path.react-flow__edge-path:hover {
 }
 
 .editFormContainer {
-  h2 {
+  h2, h3 {
     text-align: center;
     margin-bottom: 5px;
   }
@@ -35,13 +35,21 @@ path.react-flow__edge-path:hover {
     * {
       padding: 3px 5px;
     }
+    p {
+      margin-left: 0;
+      padding-left: 0;
+    }
     label {
-      width: 90%;
+      width: 95%;
+      height: 30px;
       display: flex;
       justify-content: space-between;
-      // button {
-      //   border-radius: 50%;
-      // }
+      div {
+        max-width: 120px;
+        button {
+          display: inline;
+        }
+      }
     }
   }
 }

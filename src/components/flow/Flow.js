@@ -54,7 +54,7 @@ function Flow() {
         onConnect,
         nodeTypes,
         fitView: true,
-        fitViewOptions: { padding: 1 },
+        fitViewOptions: { padding: 5 },
         // snapToGrid: true,
         // snapGrid: 1,
     }

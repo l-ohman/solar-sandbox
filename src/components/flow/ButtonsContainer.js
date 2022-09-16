@@ -62,8 +62,8 @@ function ButtonsContainer({ nodes, edges }) {
         <div id="addNodesTab">
             <button id="addPlanet" onClick={handleClick}>Add planet</button>
             <button id="addMoon" onClick={handleClick}>Add moon</button>
-            <button onClick={logState}>Log state</button>
             <button onClick={toggleButton}>Toggle axes</button>
+            <button onClick={logState}>Log state</button>
         </div>
     )
 }

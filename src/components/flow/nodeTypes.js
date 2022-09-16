@@ -19,7 +19,7 @@ function PlanetNode({ data }) {
         <>
             <Handle type="target" position={Position.Top} />
             <div className="editFormContainer">
-                <h2>planet!</h2>
+                <h2>planet</h2>
                 <EditPlanetForm {...data}/>
             </div>
             <Handle type="source" position={Position.Bottom}/>

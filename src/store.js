@@ -6,7 +6,6 @@ export const defaultNodes = [
     type: "sun",
     position: { x: 0, y: 0 },
     className: "node",
-    draggable: false,
   },
 ];
 

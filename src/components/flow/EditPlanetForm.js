@@ -27,11 +27,19 @@ function EditPlanetForm(props) {
     const handleIncrement = (e) => {
         e.preventDefault();
 
+        // changing the increment amount depending on the updated value type
+        let incrementAmt = 1;
+        if (e.target.name === "size") {
+            incrementAmt *= 0.2;
+        } else if (e.target.name === "speed") {
+            incrementAmt *= 7;
+        }
+
         let updatedValue;
         if (e.target.innerText === "+") {
-            updatedValue = form[e.target.name] + 0.1;
+            updatedValue = form[e.target.name] + incrementAmt;
         } else {
-            updatedValue = form[e.target.name] - 0.1;
+            updatedValue = form[e.target.name] - incrementAmt;
         }
         let updatedForm = {
             ...form,
@@ -56,18 +64,26 @@ function EditPlanetForm(props) {
 
             <label>
                 <p>size:</p>
+                <div>
                 <button name="size" onClick={handleIncrement}>-</button>
                 <button name="size" onClick={handleIncrement}>+</button>
+                </div>
             </label>
 
             <label>
                 <p>distance:</p>
-                <button>-</button><button>+</button>
+                <div>
+                <button name="distance" onClick={handleIncrement}>-</button>
+                <button name="distance" onClick={handleIncrement}>+</button>
+                </div>
             </label>
 
             <label>
                 <p>speed:</p>
-                <button>-</button><button>+</button>
+                <div>
+                <button name="speed" onClick={handleIncrement}>-</button>
+                <button name="speed" onClick={handleIncrement}>+</button>
+                </div>
             </label>
 
         </form>

@@ -1,6 +1,5 @@
 import React from "react";
 import { useFrame } from "@react-three/fiber";
-// import { Vector3 } from "three";
 import useStore from "../../store";
 import { orbitCalculator /*randomStartingPosition*/ } from "./utils";
 
@@ -17,7 +16,7 @@ function Planet({ position, distance, speed, color, size, parentDistance = null 
 
   return (
     <mesh position={parentDistance ? moonPos : position}>
-      <sphereGeometry args={[size, 12, 12]} />
+      <sphereGeometry args={[size, 24, 24]} />
       <meshBasicMaterial color={color} />
     </mesh>
   );

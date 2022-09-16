@@ -21,7 +21,7 @@ function Sun() {
       onPointerOut={() => setHovered(false)}
       onClick={togglePlaying}
     >
-      <sphereGeometry args={[2, 12, 12]} />
+      <sphereGeometry args={[4, 12, 12]} />
       <meshStandardMaterial
         emissive="gold"
         emissiveIntensity={hovered ? 2 : 1.1}
