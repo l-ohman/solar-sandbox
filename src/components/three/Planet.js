@@ -15,6 +15,7 @@ function Planet({ id, color, size, distance, speed, parent = null }) {
   useFrame(() => {
     if (state.playing) {
       let pos = ref.current.position;
+      console.log(parent);
       if (parent) {
         [pos.x, pos.y, pos.z] = orbitCalculator(distance, pos, speed, state.planetPositions[parent]);
       } else {

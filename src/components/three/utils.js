@@ -74,7 +74,9 @@ export function restructureStoreData(nodes, edges) {
     if (edge.source !== "sun") {
       let moon = nodes.find(node => node.id === edge.target);
       let planet = output.find(node => node.id === edge.source);
-      planet.moons.push(moon);
+      if (planet.moons) {
+        planet.moons.push(moon);
+      }
     }
   })
 

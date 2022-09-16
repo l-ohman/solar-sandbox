@@ -16,7 +16,7 @@ const defaultPlanet = (id) => ({
         id,
         color: 'blue',
         size: 1,
-        distance: Math.ceil(Math.random()*50),
+        distance: Math.ceil(Math.random()*25)+10,
         speed: 10,
     }
 }); 
@@ -29,9 +29,9 @@ const defaultMoon = (id) => ({
     data: {
         id,
         color: 'red',
-        size: 1,
-        distance: Math.ceil(Math.random()*7),
-        speed: 75
+        size: 0.5,
+        distance: Math.ceil(Math.random()*4)+2,
+        speed: 100
     }
 })
 
