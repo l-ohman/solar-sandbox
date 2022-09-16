@@ -59,9 +59,15 @@ function Flow() {
         // snapGrid: 1,
     }
 
+    // temp utility - passing this to addNodes tab
+    const stateLog = {
+        nodes,
+        edges,
+    }
+
     return (
         <div className="half left">
-            <AddNodesTab />
+            <AddNodesTab {...stateLog} />
             <ReactFlow {...flowProps}>
                 <FlowControls />
                 <Background color="#000" gap={gridGap} />

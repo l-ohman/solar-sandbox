@@ -36,7 +36,6 @@ function MoonNode({ data }) {
             <div>
                 <h3>moon</h3>
                 <p>{"{form for controls}"}</p>
-                <p>{data ? data : "no data found"}</p>
             </div>        
             <Handle type="target" position={Position.Top} />
         </>

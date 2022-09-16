@@ -35,21 +35,29 @@ const defaultMoon = (id) => ({
     }
 })
 
-function AddNodesTab() {
+function AddNodesTab({ nodes, edges }) {
     const addNode = useStore(state => state.addNode);
 
     const handleClick = (e) => {
+        let newNode;
         let id = generateId();
-        if (e.target.id) {
-            console.log(e.target.id)
+        if (e.target.id === "addPlanet") {
+            newNode = defaultPlanet(id);
+        } else {
+            newNode = defaultMoon(id);
         }
-        let newNode = defaultPlanet(id);
         addNode(newNode); 
     }
 
+    const logState = () => {
+        console.log('Nodes:', nodes)
+        console.log('Edges:', edges)
+    }
     return(
         <div id="addNodesTab">
-            <button id="addPlanet" onClick={handleClick}>Add planet/moon</button>
+            <button id="addPlanet" onClick={handleClick}>Add planet</button>
+            <button id="addMoon" onClick={handleClick}>Add moon</button>
+            <button onClick={logState}>Log state</button>
         </div>
     )
 }
