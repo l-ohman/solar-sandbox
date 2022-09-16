@@ -1,8 +1,7 @@
 import React from "react";
 import ReactFlow, { Background, applyNodeChanges, applyEdgeChanges, addEdge } from "react-flow-renderer";
-import { FlowControls, AddNodesTab, nodeTypes } from "./";
+import { FlowControls, ButtonsContainer, nodeTypes } from "./";
 import useStore, { defaultNodes } from "../../store";
-// import { defaultNodes, defaultEdges } from "./defaultNodesEdges";
 
 function Flow() {
     const newNode = useStore(state => state.newNode);
@@ -68,7 +67,7 @@ function Flow() {
 
     return (
         <div className="half left">
-            <AddNodesTab {...stateLog} />
+            <ButtonsContainer {...stateLog} />
             <ReactFlow {...flowProps}>
                 <FlowControls />
                 <Background color="#000" gap={gridGap} />

@@ -16,7 +16,7 @@ const defaultPlanet = (id) => ({
         id,
         color: 'blue',
         size: 1,
-        distance: Math.ceil(Math.random()*25)+10,
+        distance: Math.ceil(Math.random()*15)+7,
         speed: 10,
     }
 }); 
@@ -35,7 +35,7 @@ const defaultMoon = (id) => ({
     }
 })
 
-function AddNodesTab({ nodes, edges }) {
+function ButtonsContainer({ nodes, edges }) {
     const addNode = useStore(state => state.addNode);
     const toggleAxes = useStore(state => state.toggleAxes);
 
@@ -68,4 +68,4 @@ function AddNodesTab({ nodes, edges }) {
     )
 }
 
-export default AddNodesTab;
+export default ButtonsContainer;

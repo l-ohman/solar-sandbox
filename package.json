@@ -1,10 +1,11 @@
 {
-  "name": "solar-synth",
+  "name": "solar-sandbox",
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "npm run build-w & npm run server-w",
-    "test": "echo \"No tests written\"",
+    "start": "node server",
+    "start:dev": "npm run build-w & npm run server-w",
+    "build": "webpack",
     "build-w": "webpack -w",
     "server-w": "nodemon server -w"
   },

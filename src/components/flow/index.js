@@ -1,5 +1,5 @@
 import FlowControls from "./FlowControls";
-import AddNodesTab from "./AddNodesTab";
+import ButtonsContainer from "./ButtonsContainer";
 import nodeTypes from "./nodeTypes";
 
-export { FlowControls, AddNodesTab, nodeTypes };
+export { FlowControls, ButtonsContainer, nodeTypes };
