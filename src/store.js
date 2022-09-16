@@ -39,19 +39,6 @@ const useStore = create((set, get) => ({
   // // Would like to use this to add 'undo' in the future
   // history: [],
   // updateHistory: () => {},
-
-  // Planet positions - should refactor so position is not stored here (seems unnecessarily CPU-intensive)
-  planetPositions: {
-    // id: pos
-  },
-  updatePlanetPositions: (id, pos) =>
-    set((state) => ({
-      planetPositions: {
-        ...state.planetPositions,
-        // State can't handle vectors for some reason (probably user error), so it's converted to an array
-        [id]: [pos.x, pos.y, pos.z],
-      },
-    })),
 }));
 
 export default useStore;

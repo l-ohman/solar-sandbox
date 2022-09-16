@@ -44,7 +44,7 @@ function CanvasContainer() {
 
         {/* Getting data from store */}
         {planets.map((planet) => (
-          <PlanetContainer {...planet} />
+          <PlanetContainer key={planet.id} {...planet} />
         ))}
 
         {/* Using dummy data */}

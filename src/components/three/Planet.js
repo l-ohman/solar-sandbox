@@ -2,31 +2,22 @@ import React from "react";
 import { useFrame } from "@react-three/fiber";
 // import { Vector3 } from "three";
 import useStore from "../../store";
-import { orbitCalculator, randomStartingPosition } from "./utils";
+import { orbitCalculator /*randomStartingPosition*/ } from "./utils";
 
-function Planet({ id, color, size, distance, speed, parent = null }) {
-  // state[parent] is the position of the parent planet
-  const state = useStore((state) => state);
+function Planet({ position, distance, speed, color, size, parentDistance = null }) {
+  // if 'parentDistance' exists, then 'position' refers to the position of the parent
   const ref = React.useRef();
-
-  // This prevents pausing from setting planets to a starting position
-  const [startPosition, setStartPosition] = React.useState([distance, 0, 0]);
+  const playing = useStore((state) => state.playing);
+  const [moonPos, setMoonPos] = React.useState([0, 0, 0]);
 
   useFrame(() => {
-    if (state.playing) {
-      let pos = ref.current.position;
-      console.log(parent);
-      if (parent) {
-        [pos.x, pos.y, pos.z] = orbitCalculator(distance, pos, speed, state.planetPositions[parent]);
-      } else {
-        [pos.x, pos.y, pos.z] = orbitCalculator(distance, pos, speed);
-        state.updatePlanetPositions(id, pos);
-      };
+    if (parentDistance && playing) {
+      setMoonPos(orbitCalculator(distance, moonPos, speed, position));
     }
   });
 
   return (
-    <mesh ref={ref} position={startPosition}>
+    <mesh ref={ref} position={parentDistance ? moonPos : position}>
       <sphereGeometry args={[size, 12, 12]} />
       <meshBasicMaterial color={color} />
     </mesh>
