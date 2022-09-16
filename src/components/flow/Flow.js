@@ -6,19 +6,15 @@ import useStore, { defaultNodes } from "../../store";
 
 function Flow() {
     const newNode = useStore(state => state.newNode);
-    // const edgesStore = useStore(state => state.edges);
     const updateNodes = useStore(state => state.updateNodes);
+    const updateEdges = useStore(state => state.updateEdges)
 
-    // Hooks to handles movement/selection - might have to remove these to do custom callbacks
-    // const [nodes, setNodes, onNodesChange] = useNodesState(nodesStore);
-    // const [edges, setEdges, onEdgesChange] = useEdgesState(edgesStore);
-    console.log('flow component')
     const [nodes, setNodes] = React.useState(defaultNodes);
     const [edges, setEdges] = React.useState([]);
 
     const onNodesChange = React.useCallback((changes) => {
         setNodes((nodes) => {
-            let updated = applyNodeChanges(changes, nodes);
+            const updated = applyNodeChanges(changes, nodes);
             updateNodes(updated);
             return updated;
         });
@@ -26,7 +22,9 @@ function Flow() {
     );
     const onEdgesChange = React.useCallback((changes) => {
         setEdges((edges) => {
-            applyEdgeChanges(changes, edges)
+            const updated = applyEdgeChanges(changes, edges);
+            updateEdges(updated);
+            return updated;
         });
         }, [setEdges]
     )
@@ -40,8 +38,11 @@ function Flow() {
 
     // For connecting nodes
     const onConnect = React.useCallback(
-        (connection) => setEdges((edges) => addEdge(connection, edges)),
-        [setEdges]
+        (connection) => setEdges((edges) => {
+            let updated = addEdge(connection, edges);
+            updateEdges(updated);
+            return updated;
+        }), [setEdges]
     );
 
     const gridGap = 20;

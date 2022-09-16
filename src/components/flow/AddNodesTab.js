@@ -7,7 +7,7 @@ function generateId() {
     return Math.random().toPrecision(5);
 }
 
-const defaultNode = (id) => ({
+const defaultPlanet = (id) => ({
     id,
     type: 'planet',
     position: {x:0, y:85},
@@ -19,21 +19,37 @@ const defaultNode = (id) => ({
         distance: Math.ceil(Math.random()*50),
         speed: 10,
     }
-});
+}); 
+
+const defaultMoon = (id) => ({
+    id,
+    type: 'moon',
+    position: {x:0, y:100},
+    className: 'node',
+    data: {
+        id,
+        color: 'red',
+        size: 1,
+        distance: Math.ceil(Math.random()*7),
+        speed: 75
+    }
+})
 
 function AddNodesTab() {
     const addNode = useStore(state => state.addNode);
 
-    const handleClick = () => {
-        // nodes.forEach(itm => console.log(itm.position))
+    const handleClick = (e) => {
         let id = generateId();
-        let newNode = defaultNode(id);
+        if (e.target.id) {
+            console.log(e.target.id)
+        }
+        let newNode = defaultPlanet(id);
         addNode(newNode); 
     }
 
     return(
         <div id="addNodesTab">
-            <button onClick={handleClick}>Add planet/moon</button>
+            <button id="addPlanet" onClick={handleClick}>Add planet/moon</button>
         </div>
     )
 }

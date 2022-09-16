@@ -20,7 +20,6 @@ const useStore = create((set, get) => ({
     set((state) => ({
       nodes,
     })),
-
   // 'newNode' is something for the Flow to watch so it knows when to render from state (as opposed to rerendering for local changes, because the local changes are sent to the state - but maybe they don't need to be?)
   newNode: {},
   addNode: (newNode) =>
@@ -28,8 +27,17 @@ const useStore = create((set, get) => ({
       nodes: [...state.nodes, newNode],
       newNode,
     })),
+
   // Edges
   edges: [],
+  updateEdges: (edges) =>
+    set(state => ({
+      edges,
+    })),
+  
+  // // Would like to use this to add 'undo' in the future
+  // history: [],
+  // updateHistory: () => {},
 
   // Planet positions - should refactor so position is not stored here (seems unnecessarily CPU-intensive)
   planetPositions: {
