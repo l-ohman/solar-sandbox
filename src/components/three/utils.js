@@ -51,5 +51,6 @@ export function restructureStoreData(nodes, edges) {
     }
   });
 
+  console.log('output: ', output)
   return output;
 }

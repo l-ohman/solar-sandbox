@@ -3,7 +3,7 @@
 - [x] build solar model from data in zustand store
 - [x] create forms for react-flow nodes
 - [x] refactor components so planet position does not need to be in store
-- [ ] stars floating outside the solar system
+- [x] stars floating outside the solar system
 - [ ] fix moon orbit (rotation is faster when closer to sun - probably a math error somewhere)
 
 ### etc:

@@ -1,79 +1,93 @@
 import React from "react";
-import ReactFlow, { Background, applyNodeChanges, applyEdgeChanges, addEdge } from "react-flow-renderer";
+import ReactFlow, {
+  Background,
+  applyNodeChanges,
+  applyEdgeChanges,
+  addEdge,
+} from "react-flow-renderer";
 import { FlowControls, ButtonsContainer, nodeTypes } from "./";
 import useStore, { defaultNodes } from "../../store";
 
 function Flow() {
-    const newNode = useStore(state => state.newNode);
-    const updateNodes = useStore(state => state.updateNodes);
-    const updateEdges = useStore(state => state.updateEdges)
+  const newNode = useStore((state) => state.newNode);
+  const updateNodes = useStore((state) => state.updateNodes);
+  const updateEdges = useStore((state) => state.updateEdges);
 
-    const [nodes, setNodes] = React.useState(defaultNodes);
-    const [edges, setEdges] = React.useState([]);
+  // 'nodes' and 'edges' as stored in react-flow graph
+  const [nodes, setNodes] = React.useState(defaultNodes);
+  const [edges, setEdges] = React.useState([]);
 
-    // This should be refactored... the store shouldn't need the position of these elements, it should only need the structure
-    const onNodesChange = React.useCallback((changes) => {
-        setNodes((nodes) => {
-            const updated = applyNodeChanges(changes, nodes);
-            updateNodes(updated);
-            return updated;
-        });
-        }, [setNodes]
-    );
-    const onEdgesChange = React.useCallback((changes) => {
-        setEdges((edges) => {
-            const updated = applyEdgeChanges(changes, edges);
-            updateEdges(updated);
-            return updated;
-        });
-        }, [setEdges]
-    )
-
-    // Updates display when item added via 'add planet' button
-    React.useEffect(() => {
-        if (newNode.position) {
-            setNodes([...nodes, newNode]);
+  const onNodesChange = React.useCallback(
+    (changes) => {
+      setNodes((nds) => {
+        const updatedNodes = applyNodeChanges(changes, nds);
+        if (changes[0].type !== "position" && changes[0].type !== "select") {
+          updateNodes(updatedNodes);
         }
-    }, [newNode])
+        return updatedNodes;
+      });
+    },
+    [setNodes]
+  );
+  const onEdgesChange = React.useCallback(
+    (changes) => {
+      setEdges((eds) => {
+        const updatedEdges = applyEdgeChanges(changes, eds);
+        if (changes[0].type === "remove") {
+          updateEdges(updatedEdges);
+        }
+        return updatedEdges;
+      });
+    },
+    [setEdges]
+  );
 
-    // For connecting nodes
-    const onConnect = React.useCallback(
-        (connection) => setEdges((edges) => {
-            let updated = addEdge(connection, edges);
-            updateEdges(updated);
-            return updated;
-        }), [setEdges]
-    );
-
-    const gridGap = 20;
-    let flowProps = {
-        nodes: nodes,
-        edges: edges,
-        onNodesChange,
-        onEdgesChange,
-        onConnect,
-        nodeTypes,
-        fitView: true,
-        fitViewOptions: { padding: 5 },
-        // snapToGrid: true,
-        // snapGrid: 1,
+  // Updates display when item added via 'add planet' button
+  React.useEffect(() => {
+    if (newNode.position) {
+      setNodes([...nodes, newNode]);
     }
+  }, [newNode]);
 
-    // temp utility - passing this to addNodes tab
-    const stateLog = {
-        nodes,
-        edges,
-    }
+  const onConnect = React.useCallback(
+    (connection) =>
+      setEdges((eds) => {
+        let updatedEdges = addEdge(connection, eds);
+        updateEdges(updatedEdges);
+        return updatedEdges;
+      }),
+    [setEdges]
+  );
 
-    return (
-        <div className="half left">
-            <ButtonsContainer {...stateLog} />
-            <ReactFlow {...flowProps}>
-                <FlowControls />
-                <Background color="#000" gap={gridGap} />
-            </ReactFlow>
-        </div>
-    )
+  const gridGap = 20;
+  let flowProps = {
+    nodes: nodes,
+    edges: edges,
+    onNodesChange,
+    onEdgesChange,
+    onConnect,
+    nodeTypes,
+    fitView: true,
+    fitViewOptions: { padding: 5 },
+    // snapToGrid: true,
+    // snapGrid: 1,
+  };
+
+  // temp utility - passing this to addNodes tab
+  const stateLog = {
+    nodes,
+    edges,
+  };
+
+  return (
+    <div className="half left">
+      <ButtonsContainer {...stateLog} />
+      <ReactFlow {...flowProps}>
+        <FlowControls />
+        <Background color="#000" gap={gridGap} />
+      </ReactFlow>
+    </div>
+  );
 }
 
 export default Flow;

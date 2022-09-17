@@ -11,14 +11,11 @@ import useStore from "../../store";
 import { restructureStoreData } from "./utils";
 
 function CanvasContainer() {
-  // Maybe should restructure store for this...?
   const nodes = useStore((state) => state.nodes);
   const edges = useStore((state) => state.edges);
-  // Probably better to restructure the data before sending it to the store
   let planets = restructureStoreData(nodes, edges);
 
-  // using 'useMemo' to ensure it doesn't recalculate stars every re-render
-  const stars = React.useMemo(() => generateStars(300), [generateStars])
+  const stars = React.useMemo(() => generateStars(500), [generateStars])
 
   return (
     <div className="half">
