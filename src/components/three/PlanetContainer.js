@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "../../store";
 import { useFrame } from "@react-three/fiber";
 import { Planet, OrbitCircle } from "./";
-import { orbitCalculator } from "./utils";
+import { orbitCalculator } from "../utils";
 
 function PlanetContainer({ data, moons }) {
   const playing = useStore((state) => state.playing);
@@ -12,6 +12,8 @@ function PlanetContainer({ data, moons }) {
     if (playing) {
       let newPos = orbitCalculator(data.distance, planetPos, data.speed);
       setPlanetPos(newPos);
+    } else {
+      // Should find a way to update planet position if 'distance' is changed while paused
     }
   });
 
@@ -27,12 +29,3 @@ function PlanetContainer({ data, moons }) {
 }
 
 export default PlanetContainer;
-
-// {/* <Planet {...planet1} /> */}
-// <Planet {...planet2} />
-// <OrbitCircle distance={planet2.distance} />
-// <Planet {...moon1} />
-
-// if (parent) {
-//     [pos.x, pos.y, pos.z] = orbitCalculator(distance, pos, speed, state.planetPositions[parent]);
-//     }

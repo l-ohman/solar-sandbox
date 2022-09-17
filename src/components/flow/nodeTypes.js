@@ -19,7 +19,7 @@ function PlanetNode({ data }) {
         <>
             <Handle type="target" position={Position.Top} />
             <div className="editFormContainer">
-                <h2>planet</h2>
+                <h2>{data.id}</h2>
                 <EditPlanetForm {...data}/>
             </div>
             <Handle type="source" position={Position.Bottom}/>
@@ -31,7 +31,7 @@ function MoonNode({ data }) {
     return(
         <>
             <div className="editFormContainer">
-                <h3>moon</h3>
+                <h3>{data.id}</h3>
                 <EditPlanetForm {...data}/>
             </div>        
             <Handle type="target" position={Position.Top} />

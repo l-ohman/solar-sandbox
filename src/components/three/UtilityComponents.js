@@ -1,12 +1,12 @@
 import React from "react";
 import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { AxesHelper } from "three";
+import useStore from "../../store";
 
-function CameraController() {
-    // 'useThree' gives access to canvas it is contained in; 'gl' refers to WebGL renderer
+export function CameraController() {
     const { camera, gl } = useThree();
 
-    // Resizing the window seems to break the camera, but it returns to normal when repositioned...?
     React.useEffect(() => {
         camera.position.set(30, 30, 30);
         const controls = new OrbitControls(camera, gl.domElement);
@@ -16,8 +16,12 @@ function CameraController() {
             controls.dispose();
         }
     }, [camera, gl]);
-
-    // return null;
 }
 
-export default CameraController;
+export function AxesDisplay() {
+  // x=red y=green z=blue
+  const helper = new AxesHelper(200);
+  const axesVisibility = useStore((state) => state.axesVisibility);
+  // should dispose of this instead of just making it invisible
+  return <primitive object={helper} visible={axesVisibility}/>;
+}

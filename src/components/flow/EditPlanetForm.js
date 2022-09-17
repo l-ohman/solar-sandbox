@@ -18,17 +18,19 @@ function EditPlanetForm(props) {
       };
       setForm(updatedForm);
 
-      // for state changes
+      // nodes not updating correctly
       let nodeToUpdate = nodes.find((node) => node.id === props.id);
       nodeToUpdate.data = updatedForm;
-      const updatedNodeList = [...nodes.filter((node) => node.id !== props.id), nodeToUpdate];
-      updateNodes(updatedNodeList);
+
+      let nodeList = [...nodes.filter((node) => node.id !== props.id)];
+      nodeList.push(nodeToUpdate);
+
+      updateNodes(nodeList);
 
       // quick color changes are expensive, so this only allows updating at certain intervals
       setCanUpdateColor(false);
       setTimeout(() => setCanUpdateColor(true), 100);
     }
-
   };
 
   const handleIncrement = (e) => {
@@ -54,11 +56,15 @@ function EditPlanetForm(props) {
       [e.target.name]: updatedValue,
     };
     setForm(updatedForm);
-
+    
+    // nodes not updating correctly
     let nodeToUpdate = nodes.find((node) => node.id === props.id);
     nodeToUpdate.data = updatedForm;
-    let updatedNodeList = [...nodes.filter((node) => node.id !== props.id), nodeToUpdate];
-    updateNodes(updatedNodeList);
+
+    let nodeList = [...nodes.filter((node) => node.id !== props.id)];
+    nodeList.push(nodeToUpdate);
+
+    updateNodes(nodeList);
   };
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useFrame } from "@react-three/fiber";
 import useStore from "../../store";
-import { orbitCalculator /*randomStartingPosition*/ } from "./utils";
+import { orbitCalculator /*randomStartingPosition*/ } from "../utils";
 
 function Planet({ position, distance, speed, color, size, parentDistance = null }) {
   // if 'parentDistance' exists, then 'position' refers to the position of the parent

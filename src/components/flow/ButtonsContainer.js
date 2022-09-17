@@ -1,39 +1,7 @@
 import React from "react";
 // import { defaultNodes } from "./defaultNodesEdges";
 import useStore from "../../store";
-
-function generateId() {
-  // will have 'outer' id for nodes (flow), but 'inner' id (in 'data') for planets (three)
-  return Math.random().toPrecision(5);
-}
-
-const defaultPlanet = (id) => ({
-  id,
-  type: "planet",
-  position: { x: 0, y: 85 },
-  className: "node planetNode",
-  data: {
-    id,
-    color: "#2065E0",
-    size: 1,
-    distance: Math.ceil(Math.random() * 15) + 7,
-    speed: 10,
-  },
-});
-
-const defaultMoon = (id) => ({
-  id,
-  type: "moon",
-  position: { x: 0, y: 100 },
-  className: "node moonNode",
-  data: {
-    id,
-    color: "#E52626",
-    size: 0.5,
-    distance: Math.ceil(Math.random() * 4) + 2,
-    speed: 100,
-  },
-});
+import generatePlanetNode from "./planetGenerator";
 
 function ButtonsContainer({ nodes, edges }) {
   const addNode = useStore((state) => state.addNode);
@@ -41,11 +9,10 @@ function ButtonsContainer({ nodes, edges }) {
 
   const handleClick = (e) => {
     let newNode;
-    let id = generateId();
     if (e.target.id === "addPlanet") {
-      newNode = defaultPlanet(id);
+      newNode = generatePlanetNode('planet');
     } else {
-      newNode = defaultMoon(id);
+      newNode = generatePlanetNode('moon');
     }
     addNode(newNode);
   };

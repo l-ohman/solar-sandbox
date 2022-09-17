@@ -1,21 +1,15 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  CameraController,
-  Sun,
-  PlanetContainer,
-  generateStars,
-  AxesDisplay,
-} from "./";
+import { CameraController, Sun, PlanetContainer, AxesDisplay } from "./";
 import useStore from "../../store";
-import { restructureStoreData } from "./utils";
+import { restructureStoreData, generateStars } from "../utils";
 
 function CanvasContainer() {
   const nodes = useStore((state) => state.nodes);
   const edges = useStore((state) => state.edges);
   let planets = restructureStoreData(nodes, edges);
 
-  const stars = React.useMemo(() => generateStars(500), [generateStars])
+  const stars = React.useMemo(() => generateStars(500), [generateStars]);
 
   return (
     <div className="half">

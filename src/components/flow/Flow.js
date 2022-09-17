@@ -45,7 +45,13 @@ function Flow() {
   // Updates display when item added via 'add planet' button
   React.useEffect(() => {
     if (newNode.position) {
-      setNodes([...nodes, newNode]);
+      let nodesStore = useStore.getState().nodes;
+      let fixedNodes = nodes.map(node => {
+        let nodeInStore = nodesStore.find(itm => itm.id === node.id);
+        node.data = nodeInStore.data;
+        return node
+      })
+      setNodes([...fixedNodes, newNode]);
     }
   }, [newNode]);
 
