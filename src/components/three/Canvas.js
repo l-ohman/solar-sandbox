@@ -1,6 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { CameraController, Sun, PlanetContainer, AxesDisplay } from "./";
+import { CameraController, Sun, PlanetContainer, AxesDisplay, FrameLimiter } from "./";
 import useStore from "../../store";
 import { restructureStoreData, generateStars } from "../utils";
 
@@ -13,7 +13,8 @@ function CanvasContainer() {
 
   return (
     <div className="half">
-      <Canvas>
+      <Canvas frameloop="demand">
+        {/* <FrameLimiter fps={30}/> */}
         <CameraController />
         <AxesDisplay />
         <Sun />
