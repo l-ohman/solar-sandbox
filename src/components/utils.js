@@ -1,3 +1,4 @@
+// have tried fixing moon orbits, but this function may need to be rewritten entirely to do so
 export function orbitCalculator(
   distance,
   currentPos,
@@ -49,7 +50,7 @@ export function generateStars(count = 300) {
       Math.random() * 150,
       Math.random() * 200,
     ];
-    
+
     if (x < 90 && y < 50 && z < 90) {
       if (Math.random() > 0.5) {
         x = 100 + Math.random * 75;
@@ -74,8 +75,8 @@ export function generateStars(count = 300) {
   for (let i = 0; i < count; i++) {
     let star = {
       position: generateStarPosition(),
-      color: Math.random() < 0.66 ? "gray" : "darkgray"
-    }
+      color: Math.random() < 0.66 ? "gray" : "darkgray",
+    };
     allStars.push(star);
   }
   return allStars;

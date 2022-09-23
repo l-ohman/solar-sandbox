@@ -6,7 +6,7 @@ function Footer() {
       <a
         className="github-button"
         href="https://github.com/l-ohman/solar-sandbox"
-        aria-label="Follow @l-ohman on GitHub"
+        aria-label="View solar sandbox on Github"
       >
         View on Github
       </a>

@@ -46,7 +46,6 @@ export function FrameLimiter({ fps }) {
 
   React.useEffect(() => {
     if (frameloop !== "never") {
-      console.log(frameloop);
       setThree({ frameloop: "never" });
       advance();
     }

@@ -13,7 +13,7 @@ function CanvasContainer() {
 
   return (
     <div className="half">
-      <Canvas frameloop="demand">
+      <Canvas /*frameloop="demand"*/>
         {/* <FrameLimiter fps={30}/> */}
         <CameraController />
         <AxesDisplay />
