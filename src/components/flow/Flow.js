@@ -46,18 +46,32 @@ function Flow() {
   React.useEffect(() => {
     if (newNode.position) {
       let nodesStore = useStore.getState().nodes;
+      // syncs local state with global state (data was resetting)
       let fixedNodes = nodes.map(node => {
         let nodeInStore = nodesStore.find(itm => itm.id === node.id);
         node.data = nodeInStore.data;
-        return node
+        return node;
       })
       setNodes([...fixedNodes, newNode]);
+      
+      // create edge if the newNode is a planet
+      if (newNode.type === "planet") {
+        let newEdge = {
+          id: `reactflow__edge-sun-${newNode.id}`,
+          source: "sun",
+          target: newNode.id,
+        }
+        let updatedEdges = addEdge(newEdge, edges);
+        updateEdges(updatedEdges);
+        setEdges(updatedEdges);
+      }
     }
   }, [newNode]);
 
   const onConnect = React.useCallback(
     (connection) =>
       setEdges((eds) => {
+        console.log(eds)
         let updatedEdges = addEdge(connection, eds);
         updateEdges(updatedEdges);
         return updatedEdges;

@@ -10,8 +10,8 @@ function generatePlanetName(type, length) {
 }
 
 function generateNodePosition(type) {
-  let x = Math.random() * 80 - 40;
-  let y = Math.random() * 20 + (type === "moon" ? 100 : 45);
+  let x = Math.random() * 300 - 160;
+  let y = Math.random() * 20 + (type === "moon" ? 180 : 65);
   return { x, y };
 }
 
@@ -30,10 +30,10 @@ function generatePlanetData(id, type) {
   let color = colors[Math.floor(Math.random() * colors.length)];
   let size;
   let distance;
-  let speed = Math.random() * 6 + 8;
+  let speed = Math.random() * 8 + 8;
   if (type === "planet") {
-    size = Math.random() * 1.2 + 0.8;
-    distance = Math.random() * 15 + 6;
+    size = Math.random() * 1.4 + 0.7;
+    distance = Math.random() * 18 + 5.8;
   } else {
     size = Math.random() * 0.5 + 0.2;
     distance = Math.random() * 4 + 2;

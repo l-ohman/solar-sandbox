@@ -7,6 +7,8 @@ function ButtonsContainer({ nodes, edges }) {
   const addNode = useStore((state) => state.addNode);
   const toggleAxes = useStore((state) => state.toggleAxes);
 
+  const [devTools, showDevTools] = React.useState(false);
+
   const handleClick = (e) => {
     let newNode;
     if (e.target.id === "addPlanet") {
@@ -24,6 +26,9 @@ function ButtonsContainer({ nodes, edges }) {
   const toggleButton = () => {
     toggleAxes();
   };
+  const toggleDevTools = () => {
+    showDevTools(!devTools);
+  }
 
   return (
     <div id="addNodesTab">
@@ -33,8 +38,14 @@ function ButtonsContainer({ nodes, edges }) {
       <button id="addMoon" onClick={handleClick}>
         Add moon
       </button>
-      <button onClick={toggleButton}>Toggle axes</button>
-      <button onClick={logState}>Log state</button>
+      {devTools ? <>
+        <button onClick={toggleButton}>Toggle axes</button>
+        <button onClick={logState}>Log state</button>
+        <button onClick={toggleDevTools}>Hide dev tools</button>
+      </> : <>
+      <button onClick={toggleDevTools}>Show dev tools</button>
+      </>
+      }
     </div>
   );
 }
