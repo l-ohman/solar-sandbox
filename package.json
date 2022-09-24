@@ -1,13 +1,11 @@
 {
   "name": "solar-sandbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "scripts": {
     "start": "node server",
-    "start:dev": "npm run build-w & npm run server-w",
-    "build": "webpack",
-    "build-w": "webpack -w",
-    "server-w": "nodemon server -w"
+    "dev": "webpack -w & nodemon server -w",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",

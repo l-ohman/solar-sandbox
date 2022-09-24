@@ -34,6 +34,13 @@ const useStore = create((set, get) => ({
       edges,
     })),
 
+  clearAll: () =>
+    set((state) => ({
+      nodes: defaultNodes,
+      edges: [],
+      newNode: {clear: true},
+    })),
+
   // Utilities
   axesVisibility: false,
   toggleAxes: () =>

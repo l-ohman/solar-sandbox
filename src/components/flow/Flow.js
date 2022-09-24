@@ -42,22 +42,47 @@ function Flow() {
     [setEdges]
   );
 
-  // Updates display when item added via 'add planet' button
+  // Updates display when item added via 'add planet' button, also handles clearing system
   React.useEffect(() => {
     if (newNode.position) {
       let nodesStore = useStore.getState().nodes;
+      // syncs local state with global state (data was resetting)
       let fixedNodes = nodes.map(node => {
         let nodeInStore = nodesStore.find(itm => itm.id === node.id);
         node.data = nodeInStore.data;
-        return node
+        return node;
       })
       setNodes([...fixedNodes, newNode]);
+      
+      // can just wrap this in an if-statement later if user wants to disable auto-connections
+      let newEdge;
+      if (newNode.parent === null) {
+        newEdge = {
+          id: `reactflow__edge-sun-${newNode.id}`,
+          source: "sun",
+          target: newNode.id,
+        }
+      } 
+      else {
+        newEdge = {
+          id: `reactflow__edge-${newNode.parent}-${newNode.id}`,
+          source: newNode.parent,
+          target: newNode.id,
+        }
+      }
+      const updatedEdges = addEdge(newEdge, edges);
+      updateEdges(updatedEdges);
+      setEdges(updatedEdges);
+    } else if (newNode.clear) {
+      setNodes(defaultNodes)
+      setEdges([]);
     }
   }, [newNode]);
 
   const onConnect = React.useCallback(
     (connection) =>
       setEdges((eds) => {
+        console.log(eds)
         let updatedEdges = addEdge(connection, eds);
         updateEdges(updatedEdges);
         return updatedEdges;
