@@ -42,7 +42,7 @@ function Flow() {
     [setEdges]
   );
 
-  // Updates display when item added via 'add planet' button
+  // Updates display when item added via 'add planet' button, also handles clearing system
   React.useEffect(() => {
     if (newNode.position) {
       let nodesStore = useStore.getState().nodes;
@@ -73,6 +73,9 @@ function Flow() {
       const updatedEdges = addEdge(newEdge, edges);
       updateEdges(updatedEdges);
       setEdges(updatedEdges);
+    } else if (newNode.clear) {
+      setNodes(defaultNodes)
+      setEdges([]);
     }
   }, [newNode]);
 
