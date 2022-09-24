@@ -54,17 +54,25 @@ function Flow() {
       })
       setNodes([...fixedNodes, newNode]);
       
-      // create edge if the newNode is a planet
-      if (newNode.type === "planet") {
-        let newEdge = {
+      // can just wrap this in an if-statement later if user wants to disable auto-connections
+      let newEdge;
+      if (newNode.parent === null) {
+        newEdge = {
           id: `reactflow__edge-sun-${newNode.id}`,
           source: "sun",
           target: newNode.id,
         }
-        let updatedEdges = addEdge(newEdge, edges);
-        updateEdges(updatedEdges);
-        setEdges(updatedEdges);
+      } 
+      else {
+        newEdge = {
+          id: `reactflow__edge-${newNode.parent}-${newNode.id}`,
+          source: newNode.parent,
+          target: newNode.id,
+        }
       }
+      const updatedEdges = addEdge(newEdge, edges);
+      updateEdges(updatedEdges);
+      setEdges(updatedEdges);
     }
   }, [newNode]);
 

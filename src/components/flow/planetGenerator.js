@@ -11,7 +11,7 @@ function generatePlanetName(type, length) {
 
 function generateNodePosition(type) {
   let x = Math.random() * 300 - 160;
-  let y = Math.random() * 20 + (type === "moon" ? 180 : 65);
+  let y = Math.random() * 90 + (type === "moon" ? 300 : 80);
   return { x, y };
 }
 
@@ -49,7 +49,7 @@ function generatePlanetData(id, type) {
 }
 
 // type as 'planet' or 'moon'
-export default function generatePlanetNode(type) {
+export default function generatePlanetNode(type, parent=null) {
   let id = generatePlanetName(type, 3);
   let className = `node ${type}Node`;
   let position = generateNodePosition(type);
@@ -60,5 +60,6 @@ export default function generatePlanetNode(type) {
     position,
     className,
     data,
+    parent,
   };
 }

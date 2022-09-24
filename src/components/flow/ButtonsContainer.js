@@ -13,9 +13,9 @@ function ButtonsContainer({ nodes, edges }) {
     let newNode;
     if (e.target.id === "addPlanet") {
       newNode = generatePlanetNode('planet');
-    } else {
+    } /*else {
       newNode = generatePlanetNode('moon');
-    }
+    }*/
     addNode(newNode);
   };
 
@@ -35,9 +35,9 @@ function ButtonsContainer({ nodes, edges }) {
       <button id="addPlanet" onClick={handleClick}>
         Add planet
       </button>
-      <button id="addMoon" onClick={handleClick}>
+      {/* <button id="addMoon" onClick={handleClick}>
         Add moon
-      </button>
+      </button> */}
       {devTools ? <>
         <button onClick={toggleButton}>Toggle axes</button>
         <button onClick={logState}>Log state</button>

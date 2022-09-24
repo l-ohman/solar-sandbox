@@ -1,10 +1,12 @@
 import React from "react";
 import useStore from "../../store";
+import generatePlanetNode from "./planetGenerator";
 
 function EditPlanetForm(props) {
   // This component desperately needs refactoring !
   const nodes = useStore((state) => state.nodes);
   const updateNodes = useStore((state) => state.updateNodes);
+  const addNode = useStore((state) => state.addNode);
 
   const [form, setForm] = React.useState(props);
   const [canUpdateColor, setCanUpdateColor] = React.useState(true);
@@ -67,7 +69,21 @@ function EditPlanetForm(props) {
     updateNodes(nodeList);
   };
 
+  const createMoon = () => {
+    const newMoon = generatePlanetNode('moon', form.id);
+    console.log(newMoon);
+    addNode(newMoon);
+  }
+
   return (
+    <>
+    {/* checks if form is on a Moon or Planet */}
+    {form.id[0] === "P" ? 
+    <button id="addMoon" onClick={createMoon}>
+      Add moon
+    </button>
+    : ""}
+
     <form>
       <label>
         <p>color:</p>
@@ -115,7 +131,7 @@ function EditPlanetForm(props) {
         </div>
       </label>
     </form>
-  );
+  </>);
 }
 
 export default EditPlanetForm;
