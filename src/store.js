@@ -9,7 +9,7 @@ export const defaultNodes = [
   },
 ];
 
-export default create((set, get) => ({
+const useStore = create((set, get) => ({
   // Playing status
   playing: true,
   togglePlaying: () => set((state) => ({ playing: !state.playing })),
@@ -45,3 +45,5 @@ export default create((set, get) => ({
   // history: [],
   // updateHistory: () => {},
 }));
+
+export default useStore;

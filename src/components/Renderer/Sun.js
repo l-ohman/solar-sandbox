@@ -2,7 +2,7 @@ import React from "react";
 import { useFrame } from "@react-three/fiber";
 import useStore from "../../store";
 
-function Sun() {
+export default function Sun() {
   const togglePlaying = useStore((state) => state.togglePlaying);
   const ref = React.useRef();
   const [hovered, setHovered] = React.useState(false);
@@ -29,5 +29,3 @@ function Sun() {
     </mesh>
   );
 }
-
-export default Sun;

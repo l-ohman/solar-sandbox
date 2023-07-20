@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "../../store";
 import generatePlanetNode from "./planetGenerator";
 
-function EditPlanetForm(props) {
+export default function EditPlanetForm(props) {
   // This component desperately needs refactoring !
   const nodes = useStore((state) => state.nodes);
   const updateNodes = useStore((state) => state.updateNodes);
@@ -136,5 +136,3 @@ function EditPlanetForm(props) {
     </>
   );
 }
-
-export default EditPlanetForm;

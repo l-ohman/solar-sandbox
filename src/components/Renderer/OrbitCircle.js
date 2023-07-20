@@ -1,7 +1,7 @@
 import React from "react";
 
 // 'sign' as +1/-1 for multiplying rotation (need 2 orbit circles)
-function OrbitCircle({ distance }) {
+export default function OrbitCircle({ distance }) {
   const ref = React.useRef();
   const [visibility, setVisibility] = React.useState(false);
 
@@ -19,5 +19,3 @@ function OrbitCircle({ distance }) {
     </mesh>
   );
 }
-
-export default OrbitCircle;

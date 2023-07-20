@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "../../store";
 import generatePlanetNode from "./planetGenerator";
 
-function ButtonsContainer({ nodes, edges }) {
+export default function ButtonsContainer({ nodes, edges }) {
   const addNode = useStore((state) => state.addNode);
   const clearAll = useStore((state) => state.clearAll);
 
@@ -42,5 +42,3 @@ function ButtonsContainer({ nodes, edges }) {
     </div>
   );
 }
-
-export default ButtonsContainer;

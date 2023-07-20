@@ -1,7 +1,7 @@
 import React from "react";
 import { Header, Footer, NodeGraph, Canvas } from "./components";
 
-function Root() {
+export default function Root() {
   return (
     <>
       <Header />
@@ -13,5 +13,3 @@ function Root() {
     </>
   );
 }
-
-export default Root;

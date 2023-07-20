@@ -1,16 +1,10 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  CameraController,
-  Sun,
-  PlanetContainer,
-  AxesDisplay,
-  FrameLimiter,
-} from "./";
+import { CameraController, Sun, PlanetContainer, FrameLimiter } from "./";
 import useStore from "../../store";
 import { restructureStoreData, generateStars } from "../utils";
 
-function CanvasContainer() {
+export default function CanvasContainer() {
   const nodes = useStore((state) => state.nodes);
   const edges = useStore((state) => state.edges);
   let planets = restructureStoreData(nodes, edges);
@@ -38,5 +32,3 @@ function CanvasContainer() {
     </div>
   );
 }
-
-export default CanvasContainer;
