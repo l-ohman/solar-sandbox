@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 export const defaultNodes = [
   {
@@ -38,7 +38,7 @@ const useStore = create((set, get) => ({
     set((state) => ({
       nodes: defaultNodes,
       edges: [],
-      newNode: {clear: true},
+      newNode: { clear: true },
     })),
 
   // Utilities

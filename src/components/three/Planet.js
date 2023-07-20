@@ -3,10 +3,21 @@ import { useFrame } from "@react-three/fiber";
 import useStore from "../../store";
 import { orbitCalculator /*randomStartingPosition*/ } from "../utils";
 
-function Planet({ position, distance, speed, color, size, parentDistance = null }) {
+function Planet({
+  position,
+  distance,
+  speed,
+  color,
+  size,
+  parentDistance = null,
+}) {
   // if 'parentDistance' exists, then 'position' refers to the position of the parent
   const playing = useStore((state) => state.playing);
-  const [moonPos, setMoonPos] = React.useState([distance + parentDistance, 0, 0]);
+  const [moonPos, setMoonPos] = React.useState([
+    distance + parentDistance,
+    0,
+    0,
+  ]);
 
   useFrame(() => {
     if (parentDistance && playing) {

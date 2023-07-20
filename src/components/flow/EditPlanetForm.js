@@ -58,7 +58,7 @@ function EditPlanetForm(props) {
       [e.target.name]: updatedValue,
     };
     setForm(updatedForm);
-    
+
     // nodes not updating correctly
     let nodeToUpdate = nodes.find((node) => node.id === props.id);
     nodeToUpdate.data = updatedForm;
@@ -70,68 +70,71 @@ function EditPlanetForm(props) {
   };
 
   const createMoon = () => {
-    const newMoon = generatePlanetNode('moon', form.id);
+    const newMoon = generatePlanetNode("moon", form.id);
     console.log(newMoon);
     addNode(newMoon);
-  }
+  };
 
   return (
     <>
-    {/* checks if form is on a Moon or Planet */}
-    {form.id[0] === "P" ? 
-    <button id="addMoon" onClick={createMoon}>
-      Add moon
-    </button>
-    : ""}
+      {/* checks if form is on a Moon or Planet */}
+      {form.id[0] === "P" ? (
+        <button id="addMoon" onClick={createMoon}>
+          Add moon
+        </button>
+      ) : (
+        ""
+      )}
 
-    <form>
-      <label>
-        <p>color:</p>
-        <input
-          type="color"
-          name="color"
-          value={form.color}
-          onChange={handleChange}
-        />
-      </label>
+      <form>
+        <label>
+          <p>color:</p>
+          <input
+            type="color"
+            name="color"
+            value={form.color}
+            onChange={handleChange}
+          />
+        </label>
 
-      <label>
-        <p>size:</p>
-        <div>
-          <button name="size" onClick={handleIncrement}>
-            -
-          </button>
-          <button name="size" onClick={handleIncrement}>
-            +
-          </button>
-        </div>
-      </label>
+        <label>
+          <p>size:</p>
+          <div>
+            <button name="size" onClick={handleIncrement}>
+              -
+            </button>
+            <button name="size" onClick={handleIncrement}>
+              +
+            </button>
+          </div>
+        </label>
 
-      <label>
-        <p>distance:</p>
-        <div>
-          <button name="distance" onClick={handleIncrement}>
-            -
-          </button>
-          <button name="distance" onClick={handleIncrement}>
-            +
-          </button>
-        </div>
-      </label>
+        <label>
+          <p>distance:</p>
+          <div>
+            <button name="distance" onClick={handleIncrement}>
+              -
+            </button>
+            <button name="distance" onClick={handleIncrement}>
+              +
+            </button>
+          </div>
+        </label>
 
-      <label>
-        <p>speed:</p>
-        <div>
-          <button name="speed" onClick={handleIncrement}>
-            -
-          </button>
-          <button name="speed" onClick={handleIncrement}>
-            +
-          </button>
-        </div>
-      </label>
-    </form>
-  </>);
+        <label>
+          <p>speed:</p>
+          <div>
+            <button name="speed" onClick={handleIncrement}>
+              -
+            </button>
+            <button name="speed" onClick={handleIncrement}>
+              +
+            </button>
+          </div>
+        </label>
+      </form>
+    </>
+  );
 }
 
 export default EditPlanetForm;

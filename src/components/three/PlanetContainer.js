@@ -22,7 +22,12 @@ function PlanetContainer({ data, moons }) {
       <Planet {...data} position={planetPos} />
       <OrbitCircle distance={data.distance} />
       {moons.map((moon) => (
-        <Planet key={moon.id} {...moon.data} position={planetPos} parentDistance={data.distance} />
+        <Planet
+          key={moon.id}
+          {...moon.data}
+          position={planetPos}
+          parentDistance={data.distance}
+        />
       ))}
     </>
   );

@@ -1,11 +1,12 @@
 import React from "react";
 import ReactFlow, {
   Background,
+  Controls,
   applyNodeChanges,
   applyEdgeChanges,
   addEdge,
 } from "react-flow-renderer";
-import { FlowControls, ButtonsContainer, nodeTypes } from "./";
+import { ButtonsContainer, nodeTypes } from "./";
 import useStore, { defaultNodes } from "../../store";
 
 function Flow() {
@@ -47,13 +48,13 @@ function Flow() {
     if (newNode.position) {
       let nodesStore = useStore.getState().nodes;
       // syncs local state with global state (data was resetting)
-      let fixedNodes = nodes.map(node => {
-        let nodeInStore = nodesStore.find(itm => itm.id === node.id);
+      let fixedNodes = nodes.map((node) => {
+        let nodeInStore = nodesStore.find((itm) => itm.id === node.id);
         node.data = nodeInStore.data;
         return node;
-      })
+      });
       setNodes([...fixedNodes, newNode]);
-      
+
       // can just wrap this in an if-statement later if user wants to disable auto-connections
       let newEdge;
       if (newNode.parent === null) {
@@ -61,20 +62,19 @@ function Flow() {
           id: `reactflow__edge-sun-${newNode.id}`,
           source: "sun",
           target: newNode.id,
-        }
-      } 
-      else {
+        };
+      } else {
         newEdge = {
           id: `reactflow__edge-${newNode.parent}-${newNode.id}`,
           source: newNode.parent,
           target: newNode.id,
-        }
+        };
       }
       const updatedEdges = addEdge(newEdge, edges);
       updateEdges(updatedEdges);
       setEdges(updatedEdges);
     } else if (newNode.clear) {
-      setNodes(defaultNodes)
+      setNodes(defaultNodes);
       setEdges([]);
     }
   }, [newNode]);
@@ -82,7 +82,7 @@ function Flow() {
   const onConnect = React.useCallback(
     (connection) =>
       setEdges((eds) => {
-        console.log(eds)
+        console.log(eds);
         let updatedEdges = addEdge(connection, eds);
         updateEdges(updatedEdges);
         return updatedEdges;
@@ -114,7 +114,7 @@ function Flow() {
     <div className="half left">
       <ButtonsContainer {...stateLog} />
       <ReactFlow {...flowProps}>
-        <FlowControls />
+        <Controls showZoom={true} showFitView={true} showInteractive={false} />
         <Background color="#000" gap={gridGap} />
       </ReactFlow>
     </div>

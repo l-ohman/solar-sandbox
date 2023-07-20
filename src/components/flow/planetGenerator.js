@@ -49,7 +49,7 @@ function generatePlanetData(id, type) {
 }
 
 // type as 'planet' or 'moon'
-export default function generatePlanetNode(type, parent=null) {
+export default function generatePlanetNode(type, parent = null) {
   let id = generatePlanetName(type, 3);
   let className = `node ${type}Node`;
   let position = generateNodePosition(type);

@@ -4,7 +4,7 @@ import generatePlanetNode from "./planetGenerator";
 
 function ButtonsContainer({ nodes, edges }) {
   const addNode = useStore((state) => state.addNode);
-  const clearAll = useStore(state => state.clearAll);
+  const clearAll = useStore((state) => state.clearAll);
   const toggleAxes = useStore((state) => state.toggleAxes);
 
   const [devTools, showDevTools] = React.useState(false);
@@ -19,7 +19,11 @@ function ButtonsContainer({ nodes, edges }) {
     addNode(newNode);
   };
   const clearSystem = () => {
-    if (confirm("Are you sure you want to delete everything in your solar system?")) {
+    if (
+      confirm(
+        "Are you sure you want to delete everything in your solar system?"
+      )
+    ) {
       clearAll();
     }
   };
@@ -45,7 +49,7 @@ function ButtonsContainer({ nodes, edges }) {
       <button id="clearSystem" onClick={clearSystem}>
         Clear system
       </button>
-      {devTools ? (
+      {/* {devTools ? (
         <>
           <button onClick={toggleButton}>Toggle axes</button>
           <button onClick={logState}>Log state</button>
@@ -55,7 +59,7 @@ function ButtonsContainer({ nodes, edges }) {
         <>
           <button onClick={toggleDevTools}>Show dev tools</button>
         </>
-      )}
+      )} */}
     </div>
   );
 }

@@ -1,10 +1,8 @@
 import React from "react";
-import { createRoot } from "react-dom/client"
+import { createRoot } from "react-dom/client";
 
-import "./less/main.less"
+import "./less/main.less";
 import Root from "./Root";
 
 const root = createRoot(document.getElementById("root"));
-root.render(
-    <Root />
-)
+root.render(<Root />);
