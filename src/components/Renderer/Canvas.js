@@ -22,7 +22,6 @@ function CanvasContainer() {
       <Canvas /*frameloop="demand"*/>
         {/* <FrameLimiter fps={30}/> */}
         <CameraController />
-        <AxesDisplay />
         <Sun />
 
         {planets.map((planet) => (

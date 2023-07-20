@@ -35,7 +35,7 @@ function ButtonsContainer({ nodes, edges }) {
       <button id="clearSystem" onClick={clearSystem}>
         Clear system
       </button>
-      {/* <button onClick={logState}>Log state</button> */}
+      <button onClick={logState}>Log state</button>
       <button onClick={() => console.log("Open tutorial modal placeholder")}>
         Help
       </button>

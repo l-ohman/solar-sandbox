@@ -9,7 +9,7 @@ export const defaultNodes = [
   },
 ];
 
-const useStore = create((set, get) => ({
+export default create((set, get) => ({
   // Playing status
   playing: true,
   togglePlaying: () => set((state) => ({ playing: !state.playing })),
@@ -41,15 +41,7 @@ const useStore = create((set, get) => ({
       newNode: { clear: true },
     })),
 
-  // Utilities
-  axesVisibility: false,
-  toggleAxes: () =>
-    set((state) => ({
-      axesVisibility: !state.axesVisibility,
-    })),
   // // Would like to add 'undo' feature in the future
   // history: [],
   // updateHistory: () => {},
 }));
-
-export default useStore;

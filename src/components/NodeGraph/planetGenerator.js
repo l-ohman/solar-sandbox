@@ -1,3 +1,5 @@
+// todo: separate functions for generating planets/moons
+
 function generatePlanetName(type, length) {
   let characters = "QWERTYUIOPASDFGHJKLZXCVBNM0123456789123456789";
   let name = "";
@@ -30,14 +32,14 @@ function generatePlanetData(id, type) {
   let color = colors[Math.floor(Math.random() * colors.length)];
   let size;
   let distance;
-  let speed = Math.random() * 8 + 8;
+  let speed = Math.random() * 6 + 8;
   if (type === "planet") {
     size = Math.random() * 1.4 + 0.7;
-    distance = Math.random() * 18 + 5.8;
+    distance = Math.random() * 18 + 6;
   } else {
-    size = Math.random() * 0.5 + 0.2;
-    distance = Math.random() * 4 + 2;
-    speed *= 11;
+    size = Math.random() * 0.5 + 0.25;
+    distance = Math.random() * 3 + 2;
+    speed *= 2;
   }
   return {
     id,

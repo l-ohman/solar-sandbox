@@ -1,8 +1,6 @@
 import React from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { AxesHelper } from "three";
-import useStore from "../../store";
 
 export function CameraController() {
   const { camera, gl } = useThree();
@@ -52,12 +50,4 @@ export function FrameLimiter({ fps }) {
   }, [frameloop]);
 
   return <></>;
-}
-
-export function AxesDisplay() {
-  // x=red y=green z=blue
-  const helper = new AxesHelper(200);
-  const axesVisibility = useStore((state) => state.axesVisibility);
-  // should dispose of this instead of just making it invisible
-  return <primitive object={helper} visible={axesVisibility} />;
 }

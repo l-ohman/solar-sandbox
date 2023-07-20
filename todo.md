@@ -1,4 +1,5 @@
-## main todo:
+## main:
+
 - [x] set up react-flow with zustand store
 - [x] build solar model from data in zustand store
 - [x] create forms for react-flow nodes
@@ -7,10 +8,12 @@
 - [ ] setup mobile view (horizontal division, scaling, zooming, etc)
 - [ ] fix moon orbit (rotation is faster when closer to sun - probably a math/update error somewhere)
 - [x] 'add planet' connects planet to sun automatically
-- [ ] move 'add moon' button to individual planets
+- [x] move 'add moon' button to individual planets
 - [ ] tutorial / guidance for first-time users
 
-### secondary todo:
+### secondary:
+
+- [ ] ability to rename planets
 - [ ] simple noise textures for planets/sun
 - [ ] planet rings
 - [ ] hide orbit rings button
@@ -18,9 +21,12 @@
 - [ ] increase size of nodes/edges; improve selectability
 - [ ] ability to share systems via a link (code for end of URL)
 - [ ] restrict camera from leaving the system (maybe don't allow right-click movement?)
-- [ ] camera movement smoothing
 - [ ] switch to React production build on deployed version
 
 ### etc:
+
 - [x] make text (header/footer) not selectable when clicking in node editor / 3d space
 - [ ] attempt implementation of tone.js
+- [ ] smoother camera movement
+- [ ] realistic lighting for planets (?)
+- [ ] slightly elliptical orbits

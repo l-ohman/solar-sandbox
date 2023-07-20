@@ -9,7 +9,7 @@ import ReactFlow, {
 import { ButtonsContainer, nodeTypes } from "./";
 import useStore, { defaultNodes } from "../../store";
 
-function Flow() {
+export default function NodeGraph() {
   const newNode = useStore((state) => state.newNode);
   const updateNodes = useStore((state) => state.updateNodes);
   const updateEdges = useStore((state) => state.updateEdges);
@@ -120,5 +120,3 @@ function Flow() {
     </div>
   );
 }
-
-export default Flow;
