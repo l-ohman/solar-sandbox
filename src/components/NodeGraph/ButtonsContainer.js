@@ -1,10 +1,12 @@
 import React from "react";
 import useStore from "../../store";
+import HelpWindow from "./HelpWindow";
 import generatePlanetNode from "./planetGenerator";
 
 export default function ButtonsContainer({ nodes, edges }) {
   const addNode = useStore((state) => state.addNode);
   const clearAll = useStore((state) => state.clearAll);
+  const [helpModal, setHelpModal] = React.useState(false);
 
   const handleClick = (e) => {
     const newNode = generatePlanetNode("planet");
@@ -29,16 +31,12 @@ export default function ButtonsContainer({ nodes, edges }) {
       <button id="addPlanet" onClick={handleClick}>
         Add planet
       </button>
-      {/* <button id="addMoon" onClick={handleClick}>
-        Add moon
-      </button> */}
       <button id="clearSystem" onClick={clearSystem}>
         Clear system
       </button>
-      <button onClick={logState}>Log state</button>
-      <button onClick={() => console.log("Open tutorial modal placeholder")}>
-        Help
-      </button>
+      {/* <button onClick={logState}>Log state</button> */}
+      <button onClick={() => setHelpModal(true)}>Help</button>
+      {helpModal && <HelpWindow closeWindow={() => setHelpModal(false)} />}
     </div>
   );
 }

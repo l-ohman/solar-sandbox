@@ -41,7 +41,7 @@
 }
 
 #main-container {
-  z-index: auto;
+  // z-index: auto;
   position: absolute;
   top: @headerHeight;
 
@@ -60,4 +60,26 @@
 
 .left {
   background-color: white;
+}
+
+#modal-container {
+  background: rgba(0.2, 0.2, 0.2, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  // z-index: 10000;
+
+  #modal-window {
+    background: white;
+    position: absolute;
+    // z-index: 10000;
+
+    @height: 500px;
+    margin: 0 auto;
+    width: 350px;
+    height: @height;
+    top: calc(45vh - (@height / 2));
+  }
 }
