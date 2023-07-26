@@ -12,8 +12,8 @@ function generatePlanetName(type, length) {
 }
 
 function generateNodePosition(type) {
-  let x = Math.random() * 300 - 160;
-  let y = Math.random() * 90 + (type === "moon" ? 300 : 80);
+  let x = Math.random() * 400 - 160;
+  let y = Math.random() * 90 + (type === "moon" ? 350 : 80);
   return { x, y };
 }
 

@@ -2,8 +2,8 @@ import React from "react";
 import useStore from "../../store";
 import generatePlanetNode from "./planetGenerator";
 
+//todo: refactor this component
 export default function EditPlanetForm(props) {
-  // This component desperately needs refactoring !
   const nodes = useStore((state) => state.nodes);
   const updateNodes = useStore((state) => state.updateNodes);
   const addNode = useStore((state) => state.addNode);
@@ -71,7 +71,6 @@ export default function EditPlanetForm(props) {
 
   const createMoon = () => {
     const newMoon = generatePlanetNode("moon", form.id);
-    console.log(newMoon);
     addNode(newMoon);
   };
 

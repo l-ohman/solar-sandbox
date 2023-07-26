@@ -82,7 +82,6 @@ export default function NodeGraph() {
   const onConnect = React.useCallback(
     (connection) =>
       setEdges((eds) => {
-        console.log(eds);
         let updatedEdges = addEdge(connection, eds);
         updateEdges(updatedEdges);
         return updatedEdges;

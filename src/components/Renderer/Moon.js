@@ -10,7 +10,7 @@ export default function Moon({
   color,
   size,
 }) {
-  // if 'parentDistance' exists, then 'position' refers to the position of the parent
+  // todo: re-enable pausing
   const playing = useStore((state) => state.playing);
   const moonRef = React.useRef(null);
 
