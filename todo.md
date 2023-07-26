@@ -6,7 +6,7 @@
 - [x] refactor components so planet position does not need to be in store
 - [x] stars floating outside the solar system
 - [ ] setup mobile view (horizontal division, scaling, zooming, etc)
-- [ ] fix moon orbit (rotation is faster when closer to sun - probably a math/update error somewhere)
+- [x] fix moon orbit (rotation is faster when closer to sun - probably a math/update error somewhere)
 - [x] 'add planet' connects planet to sun automatically
 - [x] move 'add moon' button to individual planets
 - [ ] tutorial / guidance for first-time users
