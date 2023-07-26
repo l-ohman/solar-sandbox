@@ -9,14 +9,15 @@
 - [x] fix moon orbit (rotation is faster when closer to sun - probably a math/update error somewhere)
 - [x] 'add planet' connects planet to sun automatically
 - [x] move 'add moon' button to individual planets
-- [ ] tutorial / guidance for first-time users
+- [x] tutorial / guidance for first-time users
 
 ### secondary:
 
+- [ ] delete button on planet/moon forms
 - [ ] ability to rename planets
 - [ ] simple noise textures for planets/sun
 - [ ] planet rings
-- [ ] hide orbit rings button
+- [ ] hide orbit rings button (also rings for moons, maybe)
 <!-- - [x] lower the rerender rate to 30fps -->
 - [ ] increase size of nodes/edges; improve selectability
 - [ ] ability to share systems via a link (code for end of URL)
@@ -30,3 +31,4 @@
 - [ ] smoother camera movement
 - [ ] realistic lighting for planets (?)
 <!-- - [ ] slightly elliptical orbits -->
+- [ ] improve tutorial

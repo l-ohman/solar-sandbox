@@ -62,6 +62,10 @@
   background-color: white;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 #modal-container {
   background: rgba(0.2, 0.2, 0.2, 0.5);
   position: fixed;
@@ -69,17 +73,44 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  // z-index: 10000;
 
   #modal-window {
+    padding: 18px;
     background: white;
     position: absolute;
-    // z-index: 10000;
+    border-radius: 8px;
 
-    @height: 500px;
+    @width: 350px;
     margin: 0 auto;
-    width: 350px;
-    height: @height;
-    top: calc(45vh - (@height / 2));
+    width: @width;
+    top: calc(@headerHeight + 10px);
+
+    #modal-help {
+      text-align: center;
+      margin: -2rem auto 0.3rem;
+    }
+
+    #close-button {
+      display: block;
+      margin: 1rem auto 0;
+    }
+
+    #close-window {
+      height: 1.5rem;
+      width: 1.5rem;
+      position: relative;
+      left: calc(@width - 1.5rem);
+    }
+
+    .tutorial-subheader {
+      margin-bottom: 0.3rem;
+    }
+    .tutorial-paragraph {
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-hr {
+      margin: 10px auto;
+    }
   }
 }
