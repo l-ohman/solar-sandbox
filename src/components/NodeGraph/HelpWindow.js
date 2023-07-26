@@ -2,7 +2,6 @@ import React from "react";
 
 export default function HelpWindow({ closeWindow }) {
   const handleClose = (e) => {
-    // console.log(e.target);
     if (e.target.id !== "modal-container") return;
     else closeWindow();
   };
@@ -51,6 +50,9 @@ export default function HelpWindow({ closeWindow }) {
         </p>
         <p className="tutorial-paragraph">
           You can zoom in and out with the scrollwheel.
+        </p>
+        <p className="tutorial-paragraph">
+          To pause and play the orbits, click on the sun.
         </p>
 
         <button id="close-button" onClick={closeWindow}>

@@ -13,6 +13,7 @@
 
 ### secondary:
 
+- [ ] fix planet not adjusting distance while paused
 - [ ] delete button on planet/moon forms
 - [ ] ability to rename planets
 - [ ] simple noise textures for planets/sun
@@ -21,8 +22,8 @@
 <!-- - [x] lower the rerender rate to 30fps -->
 - [ ] increase size of nodes/edges; improve selectability
 - [ ] ability to share systems via a link (code for end of URL)
-<!-- - [ ] restrict camera from leaving the system (maybe don't allow right-click movement?) -->
-<!-- - [ ] switch to React production build on deployed version -->
+  <!-- - [ ] restrict camera from leaving the system (maybe don't allow right-click movement?) -->
+  <!-- - [ ] switch to React production build on deployed version -->
 
 ### etc:
 
