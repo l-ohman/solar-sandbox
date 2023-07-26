@@ -1,10 +1,10 @@
 # solar sandbox
 ## Overview
-Solar sandbox is an interactive single-page-application that allows users to customize their own solar system with a node graph editor and view their changes in 3D in realtime. I had 2 main goals when creating this project: the first was to learn some new and interesting frameworks such as React-Flow, Three.js (+react-three-fiber), and Zustand, and the second was to build an application that is fun, immersive, and responsive to use.
+Solar sandbox is an interactive single-page-application that allows users to customize their own solar system with a node graph editor and view their changes in 3D in realtime. I had 2 main goals when creating this project: the first was to learn some new and interesting frameworks such as React-Flow, Three.js, and Zustand, and the second was to build an application that is fun, immersive, and responsive to use.
 
 **Features**
-* Realtime editing of 3D meshes
-* ~~User-friendly~~ node graph editor
+* Realtime editing of 3D view
+* User-friendly node graph editor
 * Procedurally generated star system
 
 **Learning outcomes:**
@@ -26,4 +26,4 @@ npm install
 npm run build
 npm run start
 ```
-View the project on http://localhost:3000!
+View the project on http://localhost:3000
